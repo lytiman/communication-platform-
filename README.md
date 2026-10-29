@@ -24,10 +24,8 @@ Built with **Spring Boot 3**, **PostgreSQL**, **JWT authentication**, and **WebS
 * [Real-Time (WebSocket)](#real-time-websocket)
 * [Roles and Permissions](#roles-and-permissions)
 * [Roadmap and Known Limitations](#roadmap-and-known-limitations)
-* [Contributing](#contributing)
-* [License](#license)
 
-\---
+
 
 ## Features
 
