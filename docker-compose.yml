@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16
+    container_name: comm-platform-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: maalfa_user
+      POSTGRES_PASSWORD: maalfa_pass
+      POSTGRES_DB: communication_platform
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U maalfa_user -d communication_platform"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: comm-platform-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@maalfa.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
